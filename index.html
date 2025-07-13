@@ -1,11 +1,71 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My One Page Website</title>
-  </head>
-  <body>
-    <h1>Hello, this is my HTML assignment</h1>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My One Page Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      color: #333;
+    }
+    .gallery img {
+      width: 200px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.1);
+    }
+    #lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    #lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to My Gallery</h1>
+  <div class="gallery">
+    <img src="https://picsum.photos/id/1015/300/200" alt="Image 1">
+    <img src="https://picsum.photos/id/1025/300/200" alt="Image 2">
+    <img src="https://picsum.photos/id/1035/300/200" alt="Image 3">
+  </div>
+
+  <div id="lightbox">
+    <img id="lightbox-img" src="">
+  </div>
+
+  <script>
+    const images = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+  </script>
+</body>
 </html>
-
-
